@@ -18,7 +18,10 @@ const config = {
                     loader: 'babel-loader',
                     query: {
                         cacheDirectory: true,
-                        presets: ['react', 'es2015']
+                        presets: [
+                            "@babel/preset-env",
+                            "@babel/preset-react"
+                        ]
                     }
                 }],
                 exclude: /node_modules/,
