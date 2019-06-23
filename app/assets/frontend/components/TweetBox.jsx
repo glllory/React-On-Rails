@@ -2,14 +2,17 @@
 import React from "react";
 
 export default class TweetBox extends React.Component {
+    sendTweet = (event) => {
+        event.preventDefault();
+    }
     render() {
         return (
             <div className="row">
-                <form>
+                <form onSubmit={this.sendTweet}>
                     <div className="input-field ">
-                        <textarea className="materialize-textarea" />
+                        <textarea ref="tweetTextArea" className="materialize-textarea" />
                         <label>what's happening?</label>
-                        <button className="btn right">Tweet</button>
+                        <button type="submit" className="btn right">Tweet</button>
                     </div>
                 </form>
             </div>
