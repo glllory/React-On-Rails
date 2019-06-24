@@ -3,19 +3,24 @@ import ReactDOM from 'react-dom';
 import TweetBox from './components/TweetBox';
 import TweetsList from './components/TweetsList';
 
-let mockTweets = [
-    { id: 1, name: 'Majd Saleh', bodt: 'My #First Tweet' },
-    { id: 2, name: 'Majd Saleh', bodt: 'My #Second Tweet' },
-    { id: 3, name: 'Majd Saleh', bodt: 'My #Third Tweet' },
-    { id: 4, name: 'Majd Saleh', bodt: 'My #Fourth Tweet' },
-];
 
 class Main extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            tweetsList: []
+        };
+    }
+    addTweet(tweetToAdd) {
+        let newTweetsList = this.state.tweetsList;
+        newTweetsList.unshift({ id: Date.now(), name: 'Guest', body: tweetToAdd });
+        this.setState({ tweetsList: newTweetsList });
+    }
     render() {
         return (
             <div className="container">
-                <TweetBox />
-                <TweetsList />
+                <TweetBox sendTweet={this.addTweet.bind(this)} />
+                <TweetsList tweets={this.state.tweetsList} />
             </div>
         );
     }
