@@ -36,6 +36,13 @@ AppDispatcher.register(action => {
             // emit a change event
             TweetStore.emitChange();
             break;
+        case ActionTypes.RECEIVED_ONE_TWEET:
+            console.log(4, "TweetStore");
+            _tweets.unshift(action.rawTweet);
+            // emit a change event
+            TweetStore.emitChange();
+            break;
+
         default:
 
     }
