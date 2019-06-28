@@ -1,8 +1,11 @@
-import React from "react";
+import React from 'react';
+import { Link } from 'react-router';
 import TweetBox from './TweetBox';
 import TweetsList from './TweetsList';
 import TweetStore from '..//stores/TweetStore';
 import TweetActions from '../actions/TweetActions';
+
+
 TweetActions.getAllTweets();
 
 let getAppState = () => {
@@ -50,6 +53,7 @@ export default class Index extends React.Component {
         return (
             <div className="container">
                 {/* <TweetBox sendTweet={this.addTweet.bind(this)} /> */}
+                {/* <Link to="/follow">Who to follow</Link> */}
                 <TweetBox />
                 <TweetsList tweets={this.state.tweetsList} />
             </div>
