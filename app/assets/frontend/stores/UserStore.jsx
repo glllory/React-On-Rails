@@ -3,11 +3,15 @@ import AppDispatcher from '../dispatcher';
 import ActionTypes from '../constants';
 
 let _users = [];
+let _followedIDs = [];
 
 class UserEventEmitter extends AppEventEmitter {
 
     getAll() {
-        return _users;
+        return _users.map(user => {
+            user.following = _followedIDs.indexOf(user.id) >= 0;
+            return user;
+        });
     }
 
 }
@@ -23,19 +27,12 @@ AppDispatcher.register(action => {
             // emit a change event
             UserStore.emitChange();
             break;
-
-        // case ActionTypes.RECEIVED_TWEETS:
-        //     console.log(4, "TweetStore");
-        //     _tweets = action.rawTweets;
-        //     // emit a change event
-        //     TweetStore.emitChange();
-        //     break;
-        // case ActionTypes.RECEIVED_ONE_TWEET:
-        //     console.log(4, "TweetStore");
-        //     _tweets.unshift(action.rawTweet);
-        //     // emit a change event
-        //     TweetStore.emitChange();
-        //     break;
+        case ActionTypes.RECEIVED_ONE_FOLLOWER:
+            console.log(4, "UserStore");
+            _followedIDs.push(action.rawFollower.user_id);
+            // emit a change event
+            UserStore.emitChange();
+            break;
 
         default:
     }

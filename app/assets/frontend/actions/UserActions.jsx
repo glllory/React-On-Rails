@@ -5,5 +5,8 @@ export default {
     getAllUsers() {
         console.log(1, "UserActions");
         API.getAllUsers();
+    },
+    followUser(userId) {
+        API.followUser(userId)
     }
 }

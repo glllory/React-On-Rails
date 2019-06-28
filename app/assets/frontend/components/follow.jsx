@@ -27,8 +27,7 @@ export default class Follow extends React.Component {
         this.setState(getAppState());
     }
     followUser(userId) {
-        // UserActions
-
+        UserActions.followUser(userId);
     }
     render() {
         let users = this.state.users.map(user => {
@@ -38,7 +37,7 @@ export default class Follow extends React.Component {
                     <span className="title">{user.name}</span>
                     <a className="secondary-content btn-floating grey"
                         onClick={this.followUser.bind(this, user.id)}>
-                        <i class="material-icons">person_pin</i>
+                        <i className="material-icons">person_pin</i>
                     </a>
                 </li>
             )
