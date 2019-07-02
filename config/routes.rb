@@ -11,7 +11,6 @@ Rails.application.routes.draw do
   get 'profile' => 'profile#index'
   patch 'profile' => 'profile#update'
 
-  devise_for :users
   root 'home#index'
   get '*path', to: 'home#index' # redirect all requests to single page, react router intercepts from there.
 
