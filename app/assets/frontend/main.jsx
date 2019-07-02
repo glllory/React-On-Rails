@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Index from './components/Index';
+import SignIn from './components/signIn';
+
 import Follow from './components/Follow';
 
 class App extends React.Component {
